@@ -26,8 +26,7 @@ public class BulletSpawner : MonoBehaviour
             direction = (_target.position - transform.position).normalized;
             Bullet bullet = Instantiate(_prefab, transform.position + direction, Quaternion.identity);
 
-            bullet.transform.up = direction;
-            bullet.GetComponent<Rigidbody>().velocity = direction * _speed;
+            bullet.Init(direction);
 
             yield return timeInterval;
         }

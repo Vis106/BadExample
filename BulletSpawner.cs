@@ -17,11 +17,10 @@ public class BulletSpawner : MonoBehaviour
 
     private IEnumerator Shooting()
     {
-        bool isWorking = enabled;
         Vector3 direction;
         var timeInterval = new WaitForSeconds(_shootingTime);
 
-        while (isWorking)
+        while (enabled)
         {
             direction = (_target.position - transform.position).normalized;
             Bullet bullet = Instantiate(_prefab, transform.position + direction, Quaternion.identity);

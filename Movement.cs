@@ -3,7 +3,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private Transform _allPlaces;
+    [SerializeField] private Transform _place;
 
     private Transform[] _places;
     private int _placeIndex = 0;
@@ -20,12 +20,11 @@ public class Movement : MonoBehaviour
 
     private void DefinePlaces()
     {
-        _places = new Transform[_allPlaces.childCount];
+        _places = new Transform[_place.childCount];
 
-        for (int i = 0; i < _allPlaces.childCount; i++)
+        for (int i = 0; i < _place.childCount; i++)
         {
-            if (_allPlaces.GetChild(i).TryGetComponent(out Transform place))
-                _places[i] = place;
+            _places = _place.GetComponentsInChildren<Transform>();
         }
     }
 
